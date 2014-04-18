@@ -143,6 +143,13 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
         // Set the configuration data.
         $success = FALSE;
         if($params['uuid'] == $GLOBALS['OMV_UUID_UNDEFINED']) {
+            // Check name uniqueness.
+            if(TRUE === $xmlConfig->exists("//services/offlineimap/accounts/account[name='{$params['name']}']")) {
+                throw new OMVException(OMVErrorMsg::E_CONFIG_OBJECT_UNIQUENESS,
+                    sprintf(gettext("An account with the name '%s' already exists."),
+                    $params['name']));
+            }
+
             // Append object to configuration.
             $success = $xmlConfig->set("//services/offlineimap/accounts", array("account" => $object));
         } else {
