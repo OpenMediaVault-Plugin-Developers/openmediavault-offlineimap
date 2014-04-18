@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+
+OMV_OFFLINEIMAP_CONF_NAME=/root/.offlineimaprc
+
+case "$1" in
+    purge)
+        omv_config_delete "//services/offlineimap"
+    ;;
+
+    remove)
+        if [ -f "${OMV_OFFLINEIMAP_CONF_NAME}" ]; then
+            rm -f "${OMV_OFFLINEIMAP_CONF_NAME}"
+        fi
+    ;;
+
+    upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0

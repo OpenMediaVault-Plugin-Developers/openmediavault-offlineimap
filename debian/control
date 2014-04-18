@@ -1,0 +1,13 @@
+Source: openmediavault-offlineimap
+Section: net
+Priority: optional
+Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
+Build-Depends: debhelper (>= 9.0.0)
+Standards-Version: 3.9.3
+Homepage: http://omv-extras.org/
+
+Package: openmediavault-offlineimap
+Architecture: all
+Depends: openmediavault (>= 0.6.0.8), offlineimap, sqlite, ${misc:Depends}
+Description: offlineimap plugin for OpenMediaVault.
+  Backs up and synchronizes imap email to local storage.

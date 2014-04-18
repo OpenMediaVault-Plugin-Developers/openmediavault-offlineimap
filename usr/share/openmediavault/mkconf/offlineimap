@@ -1,0 +1,113 @@
+#!/bin/sh
+#
+# @license   http://www.gnu.org/licenses/gpl.html GPL Version 3
+# @author    Volker Theile <volker.theile@openmediavault.org>
+# @author    OpenMediaVault Plugin Developers <plugins@omv-extras.org>
+# @copyright Copyright (c) 2009-2013 Volker Theile
+# @copyright Copyright (c) 2014 OpenMediaVault Plugin Developers
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+# Helpful guide for configuration - http://dev.gentoo.org/~tomka/mail.html
+
+set -e
+
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+
+OMV_OFFLINEIMAP_CONF_NAME=/root/.offlineimaprc
+
+rm -f ${OMV_OFFLINEIMAP_CONF_NAME}
+
+# Create general section
+count=$(omv_config_get_count "//services/offlineimap/accounts/account")
+
+if [ "{$count}" = "0" ]; then
+    exit 0
+fi
+
+index=1
+name=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/name")
+accounts=${name}
+
+index=2
+while [ ${index} -le ${count} ]; do
+
+    name=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/name")
+
+    if [ "${name}" != "" ]; then
+        accounts="${accounts}, ${name}"
+    fi
+
+    index=$(( ${index} + 1 ))
+done
+
+cat <<EOF > ${OMV_OFFLINEIMAP_CONF_NAME}
+[general]
+accounts = ${accounts}
+maxsyncaccounts = 3
+socktimeout = 120
+
+EOF
+
+
+# Process accounts
+index=1
+while [ ${index} -le ${count} ]; do
+
+    name=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/name")
+    host=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/host")
+    user=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/user")
+    pass=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/pass")
+    ssl=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/ssl")
+    port=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/port")
+    sfref=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/sharedfolderref")
+    sfpath=$(omv_get_sharedfolder_path "${sfref}")
+
+    if [ ! -d "${sfpath}mail/${name}" ]; then
+        mkdir -p ${sfpath}mail/${name}
+    fi
+
+    if [ "{$ssl}" = "0" ]; then
+        ssl=""
+    else
+        ssl="ssl = yes"
+    fi
+
+    if [ "${name}" != "" ]; then
+        cat <<EOF >> ${OMV_OFFLINEIMAP_CONF_NAME}
+[Account ${name}]
+localrepository = ${name}local
+remoterepository = ${name}remote
+status_backend = sqlite
+autorefresh = 2
+quick=0
+
+[Repository ${name}local]
+type = Maildir
+localfolders = ${sfpath}mail/${name}
+
+[Repository ${name}remote]
+type = IMAP
+remotehost = ${host}
+remoteuser = ${user}
+remotepass = ${pass}
+${ssl}
+port = ${port}
+
+EOF
+    fi
+
+    index=$(( ${index} + 1 ))
+done
