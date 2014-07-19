@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-offlineimap\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-18 10:21-0500\n"
+"PO-Revision-Date: 2014-04-23 00:30+0000\n"
+"Last-Translator: Toshihiro Kan <kansuke4649@gmail.com>\n"
+"Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Accounts"
+msgstr "アカウント"
+
+msgid "Add account"
+msgstr "アカウントの追加"
+
+msgid "Done..."
+msgstr "完了..."
+
+msgid "Edit account"
+msgstr "アカウントの編集"
+
+msgid "Host"
+msgstr "ホスト"
+
+msgid "Hostname"
+msgstr "ホスト名"
+
+msgid "IMAP Port"
+msgstr "IMAPポート"
+
+msgid "Name"
+msgstr "名前"
+
+msgid "OfflineIMAP"
+msgstr "OfflineIMAP"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Port"
+msgstr "ポート"
+
+msgid "SSL"
+msgstr "SSL"
+
+msgid "Shared Folder"
+msgstr "共有フォルダ"
+
+msgid "Silent"
+msgstr "暗黙"
+
+msgid "Sync"
+msgstr "同期"
+
+msgid "Syncing new mail ..."
+msgstr "新しいメールを同期しています ..."
+
+msgid "User"
+msgstr "ユーザー"
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "n/a"
+msgstr "n/a"

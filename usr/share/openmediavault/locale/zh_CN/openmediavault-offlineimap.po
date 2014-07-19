@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# songming <by@songming.me>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-offlineimap\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-18 10:21-0500\n"
+"PO-Revision-Date: 2014-04-21 11:34+0000\n"
+"Last-Translator: songming <by@songming.me>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Accounts"
+msgstr "账户"
+
+msgid "Add account"
+msgstr "添加账户"
+
+msgid "Done..."
+msgstr "完成中..."
+
+msgid "Edit account"
+msgstr "编辑账户"
+
+msgid "Host"
+msgstr "主机"
+
+msgid "Hostname"
+msgstr "主机名"
+
+msgid "IMAP Port"
+msgstr "IMAP端口"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "OfflineIMAP"
+msgstr "OfflineIMAP"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Port"
+msgstr "端口"
+
+msgid "SSL"
+msgstr "SSL"
+
+msgid "Shared Folder"
+msgstr "共享文件夹"
+
+msgid "Silent"
+msgstr "后台"
+
+msgid "Sync"
+msgstr "同步"
+
+msgid "Syncing new mail ..."
+msgstr "同步新邮件 ..."
+
+msgid "User"
+msgstr "用户"
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "n/a"
+msgstr "n/a"

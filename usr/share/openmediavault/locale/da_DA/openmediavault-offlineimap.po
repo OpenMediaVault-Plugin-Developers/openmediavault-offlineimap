@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Stefan Thrane Overby <stoverby@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-offlineimap\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-18 10:21-0500\n"
+"PO-Revision-Date: 2014-04-22 13:50+0000\n"
+"Last-Translator: Stefan Thrane Overby <stoverby@gmail.com>\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/da/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Accounts"
+msgstr "Kontoer"
+
+msgid "Add account"
+msgstr "Tilføj konto"
+
+msgid "Done..."
+msgstr "Færdig..."
+
+msgid "Edit account"
+msgstr "Rediger konto"
+
+msgid "Host"
+msgstr "Vært"
+
+msgid "Hostname"
+msgstr "Værtsnavn"
+
+msgid "IMAP Port"
+msgstr "IMAP Port"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "OfflineIMAP"
+msgstr "OfflineIMAP"
+
+msgid "Password"
+msgstr "Adgangskode"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "SSL"
+msgstr "SSL"
+
+msgid "Shared Folder"
+msgstr "Delt Mappe"
+
+msgid "Silent"
+msgstr "Stille"
+
+msgid "Sync"
+msgstr "Synk"
+
+msgid "Syncing new mail ..."
+msgstr "Synkronisere nye mails ..."
+
+msgid "User"
+msgstr "Bruger"
+
+msgid "Username"
+msgstr "Brugernavn"
+
+msgid "n/a"
+msgstr "n/a"

@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Raul Fernandez Garcia <raulfg3@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-offlineimap\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-18 10:21-0500\n"
+"PO-Revision-Date: 2014-04-21 11:43+0000\n"
+"Last-Translator: Raul Fernandez Garcia <raulfg3@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Accounts"
+msgstr "Cuentas"
+
+msgid "Add account"
+msgstr "Añadir cuenta"
+
+msgid "Done..."
+msgstr "Hecho..."
+
+msgid "Edit account"
+msgstr "Editar cuenta"
+
+msgid "Host"
+msgstr "Host"
+
+msgid "Hostname"
+msgstr "Nombre del Host"
+
+msgid "IMAP Port"
+msgstr "Puerto IMAP"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "OfflineIMAP"
+msgstr "IMAP fuera de línea"
+
+msgid "Password"
+msgstr "Contraseña"
+
+msgid "Port"
+msgstr "Puerto"
+
+msgid "SSL"
+msgstr "SSL"
+
+msgid "Shared Folder"
+msgstr "Carpeta compartida"
+
+msgid "Silent"
+msgstr "Silencioso"
+
+msgid "Sync"
+msgstr "Sincronizar"
+
+msgid "Syncing new mail ..."
+msgstr "Sincronizando nuevos e-mail ..."
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "Username"
+msgstr "Nombre"
+
+msgid "n/a"
+msgstr "n/d"

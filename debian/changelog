@@ -1,6 +1,7 @@
 openmediavault-offlineimap (1.0.1) UNRELEASED; urgency=low
 
   * Add shared folder listener
+  * Update locales
 
  -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 19 Jul 2014 10:07:32 -0500
 
