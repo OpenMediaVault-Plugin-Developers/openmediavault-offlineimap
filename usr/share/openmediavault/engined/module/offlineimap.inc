@@ -25,28 +25,56 @@ require_once "openmediavault/error.inc";
 require_once "openmediavault/util.inc";
 
 class OMVModuleOfflineImap extends OMVModuleServiceAbstract
-    implements OMVINotifyListener {
-
-    public function getName() {
+    implements OMVINotifyListener
+{
+    public function getName()
+    {
         return "offlineimap";
     }
 
-    public function applyConfig() {
-        $cmd = "omv-mkconf offlineimap 2>&1";
-        if(0 !== $this->exec($cmd, $output))
-            throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
+    private function getPluginName()
+    {
+        return strtolower( $this->getName() );
     }
 
-    function bindListeners(OMVNotifyDispatcher $dispatcher) {
+    private function getEventMessagePath()
+    {
+        return sprintf("org.openmediavault.services.%s.accounts.account", $this->getPluginName() );
+    }
+
+    private function getSharedFolderEventMessagePath()
+    {
+        return "org.openmediavault.system.shares.sharedfolder";
+    }
+
+    public function applyConfig()
+    {
+        $cmd = sprintf("omv-mkconf %s 2>&1", $this->getPluginName() );
+        if(0 !== $this->exec($cmd, $output))
+        {
+            throw new OMVException(
+                OMVErrorMsg::E_EXEC_FAILED,
+                $cmd,
+                implode("\n", $output)
+            );
+        }
+    }
+
+    function bindListeners(OMVNotifyDispatcher $dispatcher)
+    {
         $dispatcher->addListener(
             OMV_NOTIFY_CREATE | OMV_NOTIFY_MODIFY | OMV_NOTIFY_DELETE,
-            "org.openmediavault.services.offlineimap.accounts.account",
+            $this->getEventMessagePath(),
             array($this, "setDirty"));
+
+        $dispatcher->addListener(
+            OMV_NOTIFY_MODIFY,
+            $this->getSharedFolderEventMessagePath(),
+            array($this, "setDirty")
+        );
     }
 }
 
 // Register module.
 $moduleMgr = &OMVModuleMgr::getInstance();
 $moduleMgr->registerModule(new OMVModuleOfflineImap());
-
-?>

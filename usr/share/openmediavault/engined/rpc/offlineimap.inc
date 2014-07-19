@@ -26,13 +26,50 @@ require_once("openmediavault/util.inc");
 require_once("openmediavault/rpcservice.inc");
 require_once("openmediavault/notify.inc");
 
-class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
-
-    public function getName() {
+class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract
+{
+    public function getName()
+    {
         return "OfflineImap";
     }
 
-    public function initialize() {
+    private function getPluginName()
+    {
+        return strtolower( $this->getName() );
+    }
+
+    private function getXPath()
+    {
+        return sprintf( "//services/%s", $this->getPluginName() );
+    }
+
+    private function getXPathAccounts()
+    {
+        return sprintf( "%s/accounts", $this->getXPath() );
+    }
+
+    private function getXPathAccount()
+    {
+        return sprintf( "%s/account", $this->getXPathAccounts() );
+    }
+
+    private function getXPathSystemShare()
+    {
+        return "//system/shares/sharedfolder";
+    }
+
+    private function getEventMessagePath()
+    {
+        return sprintf( "org.openmediavault.services.%s", $this->getPluginName() );
+    }
+
+    private function getEventMessagePathAccount()
+    {
+        return sprintf( "%s.accounts.account", $this->getEventMessagePath() );
+    }
+
+    public function initialize()
+    {
         $this->registerMethod("getAccounts");
         $this->registerMethod("getAccount");
         $this->registerMethod("setAccount");
@@ -46,7 +83,10 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
         global $xmlConfig;
 
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
+        $this->validateMethodContext(
+            $context,
+            array( "role" => OMV_ROLE_ADMINISTRATOR )
+        );
 
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams($params, '{
@@ -60,19 +100,27 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
         }');
 
         // Get configuration data.
-        $xpath = "//services/offlineimap/accounts/account";
-        $objects = $xmlConfig->getList($xpath);
-        if(is_null($objects))
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $xpath);
+        $objects = $xmlConfig->getList( $this->getXPathAccount() );
+        if (is_null($objects))
+        {
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
+                $this->getXPathAccount()
+            );
+        }
 
         // Add additional share informations.
-        foreach($objects as $objectk => &$objectv) {
+        foreach($objects as $objectk => &$objectv)
+        {
             $objectv['sharedfoldername'] = gettext("n/a");
             // Get the shared folder configuration object.
-            $sfObject = $xmlConfig->get("//system/shares/sharedfolder[uuid='{$objectv['sharedfolderref']}']");
+            $xPath = sprintf("%s[uuid='%s']", $this->getXPathSystemShare(), $objectv['sharedfolderref'] );
+            $sfObject = $xmlConfig->get($xPath);
 
-            if(!is_null($sfObject) && !empty($sfObject))
+            if (!is_null($sfObject) && !empty($sfObject))
+            {
                 $objectv['sharedfoldername'] = $sfObject['name'];
+            }
         }
 
         // Filter the result.
@@ -80,11 +128,15 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
             $params['sortfield'], $params['sortdir']);
     }
 
-    public function getAccount($params, $context) {
+    public function getAccount($params, $context)
+    {
         global $xmlConfig;
 
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array("role" => OMV_ROLE_ADMINISTRATOR));
+        $this->validateMethodContext(
+            $context,
+            array("role" => OMV_ROLE_ADMINISTRATOR)
+        );
 
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams($params, '{
@@ -95,10 +147,14 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
         }');
 
         // Get the configuration object.
-        $xpath = sprintf("//services/offlineimap/accounts/account[uuid='%s']", $params['uuid']);
-        $object = $xmlConfig->get($xpath);
-        if(is_null($object))
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $xpath);
+        $xPath = sprintf("%s[uuid='%s']", $this->getXPathAccount(), $params['uuid']);
+        $object = $xmlConfig->get($xPath);
+        if (is_null($object))
+        {
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
+                $xPath
+        );
 
         // Modify result data
         $object['ssl']  = boolval($object['ssl']);
@@ -107,11 +163,15 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
         return $object;
     }
 
-    public function setAccount($params, $context) {
+    public function setAccount($params, $context)
+    {
         global $xmlConfig;
 
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
+        $this->validateMethodContext(
+            $context,
+            array( "role" => OMV_ROLE_ADMINISTRATOR )
+        );
 
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams($params, '{
@@ -142,40 +202,57 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
 
         // Set the configuration data.
         $success = FALSE;
-        if($params['uuid'] == $GLOBALS['OMV_UUID_UNDEFINED']) {
+        if ($params['uuid'] == $GLOBALS['OMV_UUID_UNDEFINED'])
+        {
             // Check name uniqueness.
-            if(TRUE === $xmlConfig->exists("//services/offlineimap/accounts/account[name='{$params['name']}']")) {
-                throw new OMVException(OMVErrorMsg::E_CONFIG_OBJECT_UNIQUENESS,
-                    sprintf(gettext("An account with the name '%s' already exists."),
-                    $params['name']));
+            $xPath = sprintf("%s[name='%s']", $this->getXPathAccount(), $params['name']);
+            if (TRUE === $xmlConfig->exists($xPath)
+            {
+                throw new OMVException(
+                    OMVErrorMsg::E_CONFIG_OBJECT_UNIQUENESS,
+                    sprintf(
+                        gettext("An account with the name '%s' already exists."),
+                        $params['name']
+                    )
+                );
             }
 
             // Append object to configuration.
-            $success = $xmlConfig->set("//services/offlineimap/accounts", array("account" => $object));
-        } else {
+            $success = $xmlConfig->set($this->getXPathAccounts, array("account" => $object));
+        }
+        else
+        {
             // Update existing configuration object.
-            $success = $xmlConfig->replace("//services/offlineimap/accounts/account[uuid='{$params['uuid']}']", $object);
+            $xPath = sprintf("%s[uuid='%s']", $this->getXPathAccount, $params['uuid']);
+            $success = $xmlConfig->replace($xPath, $object);
         }
 
-        if(FALSE === $success)
-            throw new OMVException(OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED);
+        if (FALSE === $success)
+        {
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED
+            );
+        }
 
         // Notify configuration changes.
         $dispatcher = &OMVNotifyDispatcher::getInstance();
-        $dispatcher->notify(($params['uuid'] == $GLOBALS['OMV_UUID_UNDEFINED']) ?
-            OMV_NOTIFY_CREATE : OMV_NOTIFY_MODIFY,
-            "org.openmediavault.services.offlineimap.accounts.account", $object);
+        $dispatcher->notify(
+            ($params['uuid'] == $GLOBALS['OMV_UUID_UNDEFINED']) ? OMV_NOTIFY_CREATE : OMV_NOTIFY_MODIFY,
+            $this->getEventMessagePathAccount(),
+            $object
+        );
 
         // Return the configuration object.
         return $object;
     }
 
-
-    public function deleteAccount($params, $context) {
-        global $xmlConfig;
-
+    public function deleteAccount($params, $context)
+    {
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
+        $this->validateMethodContext(
+            $context,
+            array( "role" => OMV_ROLE_ADMINISTRATOR )
+        );
 
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams($params, '{
@@ -186,15 +263,21 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
         }');
 
         // Delete the configuration object.
-        $xpath = sprintf("//services/offlineimap/accounts/account[uuid='%s']", $params['uuid']);
-        return $this->deleteConfigObjectByPath($xpath,
-            "org.openmediavault.services.offlineimap.accounts.account");
+        $xPath = sprintf("//services/offlineimap/accounts/account[uuid='%s']", $params['uuid']);
+        return $this->deleteConfigObjectByPath(
+            $xPath,
+            $this->getEventMessagePathAccount(),
+        );
     }
 
 
-    function doSyncSilent($params, $context) {
+    function doSyncSilent($params, $context)
+    {
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
+        $this->validateMethodContext(
+            $context,
+            array( "role" => OMV_ROLE_ADMINISTRATOR )
+        );
 
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams($params, '{
@@ -207,13 +290,23 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
         $name = $params['name'];
 
         $cmd = "/usr/bin/offlineimap -o -c /root/.offlineimaprc -a $name";
-        if(0 !== $this->exec($cmd, $output))
-            throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
+        if (0 !== $this->exec($cmd, $output))
+        {
+            throw new OMVException(
+                OMVErrorMsg::E_EXEC_FAILED,
+                $cmd,
+                implode("\n", $output)
+            );
+        }
     }
 
-    function doSync($params, $context) {
+    function doSync($params, $context)
+    {
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
+        $this->validateMethodContext(
+            $context,
+            array( "role" => OMV_ROLE_ADMINISTRATOR )
+        );
 
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams($params, '{
@@ -252,4 +345,3 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract {
 // Register the RPC service.
 $rpcServiceMgr = &OMVRpcServiceMgr::getInstance();
 $rpcServiceMgr->registerService(new OMVRpcServiceOfflineImap());
-?>
