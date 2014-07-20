@@ -76,7 +76,7 @@ while [ ${index} -le ${count} ]; do
     sfpath=$(omv_get_sharedfolder_path "${sfref}")
 
     if [ ! -d "${sfpath}mail/${name}" ]; then
-        mkdir -p ${sfpath}mail/${name}
+        mkdir -p ${sfpath}/mail/${name}
     fi
 
     if [ "{$ssl}" = "0" ]; then
@@ -96,7 +96,7 @@ quick=0
 
 [Repository ${name}local]
 type = Maildir
-localfolders = ${sfpath}mail/${name}
+localfolders = ${sfpath}/mail/${name}
 
 [Repository ${name}remote]
 type = IMAP

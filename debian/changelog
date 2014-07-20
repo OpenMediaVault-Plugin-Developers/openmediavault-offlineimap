@@ -1,9 +1,10 @@
-openmediavault-offlineimap (1.0.1) UNRELEASED; urgency=low
+openmediavault-offlineimap (1.0.1) stable; urgency=low
 
   * Add shared folder listener
+  * Fix mail path when shared folder has no trailing slash
   * Update locales
 
- -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 19 Jul 2014 10:07:32 -0500
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 19 Jul 2014 19:03:34 -0500
 
 openmediavault-offlineimap (1.0.0) stable; urgency=low
 
