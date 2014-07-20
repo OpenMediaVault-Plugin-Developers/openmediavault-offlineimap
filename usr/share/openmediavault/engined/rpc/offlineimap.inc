@@ -154,7 +154,8 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract
             throw new OMVException(
                 OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
                 $xPath
-        );
+            );
+        }
 
         // Modify result data
         $object['ssl']  = boolval($object['ssl']);
@@ -206,7 +207,7 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract
         {
             // Check name uniqueness.
             $xPath = sprintf("%s[name='%s']", $this->getXPathAccount(), $params['name']);
-            if (TRUE === $xmlConfig->exists($xPath)
+            if (TRUE === $xmlConfig->exists($xPath))
             {
                 throw new OMVException(
                     OMVErrorMsg::E_CONFIG_OBJECT_UNIQUENESS,
@@ -218,12 +219,12 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract
             }
 
             // Append object to configuration.
-            $success = $xmlConfig->set($this->getXPathAccounts, array("account" => $object));
+            $success = $xmlConfig->set($this->getXPathAccounts(), array("account" => $object));
         }
         else
         {
             // Update existing configuration object.
-            $xPath = sprintf("%s[uuid='%s']", $this->getXPathAccount, $params['uuid']);
+            $xPath = sprintf("%s[uuid='%s']", $this->getXPathAccount(), $params['uuid']);
             $success = $xmlConfig->replace($xPath, $object);
         }
 
@@ -266,7 +267,7 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract
         $xPath = sprintf("//services/offlineimap/accounts/account[uuid='%s']", $params['uuid']);
         return $this->deleteConfigObjectByPath(
             $xPath,
-            $this->getEventMessagePathAccount(),
+            $this->getEventMessagePathAccount()
         );
     }
 
