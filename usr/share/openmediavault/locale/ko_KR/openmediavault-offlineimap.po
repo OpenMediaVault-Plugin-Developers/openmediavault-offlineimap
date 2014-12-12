@@ -3,74 +3,74 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Paolo Velati <paolo.velati@gmail.com>, 2014
+# Hyeonkyu Chu <hyeonkyu@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-offlineimap\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-18 10:21-0500\n"
-"PO-Revision-Date: 2014-11-14 19:49+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/it/)\n"
+"PO-Revision-Date: 2014-11-17 01:41+0000\n"
+"Last-Translator: Hyeonkyu Chu <hyeonkyu@gmail.com>\n"
+"Language-Team: Korean (Korea) (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ko_KR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Accounts"
-msgstr "Account"
+msgstr "계정"
 
 msgid "Add account"
-msgstr "Aggiungi account"
+msgstr "계정 추가"
 
 msgid "Done..."
-msgstr "Fatto..."
+msgstr "완료..."
 
 msgid "Edit account"
-msgstr "Modifica account"
+msgstr "계정 편집"
 
 msgid "Host"
-msgstr "Host"
+msgstr "호스트"
 
 msgid "Hostname"
-msgstr "Nome Host"
+msgstr "호스트 이름"
 
 msgid "IMAP Port"
-msgstr "Porta IMAP"
+msgstr "IMAP 포트"
 
 msgid "Name"
-msgstr "Nome"
+msgstr "이름"
 
 msgid "OfflineIMAP"
 msgstr "OfflineIMAP"
 
 msgid "Password"
-msgstr "Password"
+msgstr "암호"
 
 msgid "Port"
-msgstr "Porta"
+msgstr "포트"
 
 msgid "SSL"
 msgstr "SSL"
 
 msgid "Shared Folder"
-msgstr "Cartella Condivisa"
+msgstr "공유 폴더"
 
 msgid "Silent"
-msgstr "Silenzioso"
+msgstr "조용히"
 
 msgid "Sync"
-msgstr "Sincronizza"
+msgstr "동기화"
 
 msgid "Syncing new mail ..."
-msgstr "Sincronizzazione nuova mail ..."
+msgstr "새로운 메일 동기화 중 ..."
 
 msgid "User"
-msgstr "Utente"
+msgstr "사용자"
 
 msgid "Username"
-msgstr "Nome Utente"
+msgstr "사용자 이름"
 
 msgid "n/a"
-msgstr "n/d"
+msgstr "n/a"
