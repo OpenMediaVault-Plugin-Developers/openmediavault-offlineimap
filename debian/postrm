@@ -9,7 +9,7 @@ OMV_OFFLINEIMAP_CONF_NAME=/root/.offlineimaprc
 
 case "$1" in
     purge)
-        omv_config_delete "//services/offlineimap"
+        omv_config_delete "/config/services/offlineimap"
     ;;
 
     remove)

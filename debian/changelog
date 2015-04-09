@@ -1,3 +1,9 @@
+openmediavault-offlineimap (1.1) UNRELEASED; urgency=low
+
+  * Fix github issue
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 09 Apr 2015 07:07:57 -0500
+
 openmediavault-offlineimap (1.0.2) stable; urgency=low
 
   * Add custom debian/control field XB-Plugin-Section
