@@ -104,7 +104,7 @@ remotehost = ${host}
 remoteuser = ${user}
 remotepass = ${pass}
 ${ssl}
-port = ${port}
+remoteport = ${port}
 
 EOF
     fi
