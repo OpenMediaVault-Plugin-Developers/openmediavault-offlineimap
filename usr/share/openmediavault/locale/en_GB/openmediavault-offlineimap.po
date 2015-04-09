@@ -3,74 +3,74 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Miguel Anxo Bouzada <mbouzada@gmail.com>, 2014
+# Andi Chandler <andi@gowling.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-offlineimap\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-18 10:21-0500\n"
-"PO-Revision-Date: 2015-02-16 18:13+0000\n"
-"Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
-"Language-Team: Galician (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/gl/)\n"
+"PO-Revision-Date: 2015-03-23 14:44+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
+"Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: gl\n"
+"Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Accounts"
-msgstr "Contas"
+msgstr "Accounts"
 
 msgid "Add account"
-msgstr "Engadir unha conta"
+msgstr "Add account"
 
 msgid "Done..."
-msgstr "Feito..."
+msgstr "Done..."
 
 msgid "Edit account"
-msgstr "Editar unha conta"
+msgstr "Edit account"
 
 msgid "Host"
-msgstr "Máquina"
+msgstr "Host"
 
 msgid "Hostname"
-msgstr "Nome da máquina"
+msgstr "Hostname"
 
 msgid "IMAP Port"
-msgstr "Porto IMAP"
+msgstr "IMAP Port"
 
 msgid "Name"
-msgstr "Nome"
+msgstr "Name"
 
 msgid "OfflineIMAP"
 msgstr "OfflineIMAP"
 
 msgid "Password"
-msgstr "Contrasinal"
+msgstr "Password"
 
 msgid "Port"
-msgstr "Porto"
+msgstr "Port"
 
 msgid "SSL"
 msgstr "SSL"
 
 msgid "Shared Folder"
-msgstr "Cartafol compartido"
+msgstr "Shared Folder"
 
 msgid "Silent"
-msgstr "Silencioso"
+msgstr "Silent"
 
 msgid "Sync"
-msgstr "Sincronizar"
+msgstr "Sync"
 
 msgid "Syncing new mail ..."
-msgstr "Sincronización de correo novo ..."
+msgstr "Syncing new mail ..."
 
 msgid "User"
-msgstr "Usuario"
+msgstr "User"
 
 msgid "Username"
-msgstr "Nome de usuario"
+msgstr "Username"
 
 msgid "n/a"
-msgstr "n/d"
+msgstr "n/a"
