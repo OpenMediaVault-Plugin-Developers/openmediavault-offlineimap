@@ -1,6 +1,7 @@
 openmediavault-offlineimap (1.1) UNRELEASED; urgency=low
 
   * Fix github issue
+  * Update locales
 
  -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 09 Apr 2015 07:07:57 -0500
 
