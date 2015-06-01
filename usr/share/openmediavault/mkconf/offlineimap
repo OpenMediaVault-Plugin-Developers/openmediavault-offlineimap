@@ -80,13 +80,13 @@ while [ ${index} -le ${count} ]; do
         mkdir -p ${sfpath}/mail/${name}
     fi
 
-    if [ "{$ssl}" = "0" ]; then
+    if [ "${ssl}" = "0" ]; then
         ssl=""
     else
         ssl="ssl = yes"
     fi
 
-    if [ "{$ro}" = "0" ]; then
+    if [ "${ro}" = "0" ]; then
         ro=""
     else
         ro="readonly = True"
