@@ -1,3 +1,10 @@
+openmediavault-offlineimap (1.2) stable; urgency=low
+
+  * Add read only field
+  * Update locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Mon, 01 Jun 2015 08:00:26 -0500
+
 openmediavault-offlineimap (1.1) stable; urgency=low
 
   * Fix github issue

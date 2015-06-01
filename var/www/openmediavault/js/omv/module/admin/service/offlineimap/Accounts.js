@@ -70,6 +70,11 @@ Ext.define("OMV.module.admin.service.offlineimap.Account", {
             fieldLabel : _("SSL"),
             checked    : false
         },{
+            xtype      : "checkbox",
+            name       : "ro",
+            fieldLabel : _("Read Only"),
+            checked    : true
+        },{
             xtype      : "numberfield",
             name       : "port",
             fieldLabel : _("IMAP Port"),
@@ -126,6 +131,16 @@ Ext.define("OMV.module.admin.service.offlineimap.Accounts", {
         trueIcon  : "switch_on.png",
         falseIcon : "switch_off.png"
     },{
+        xtype     : "booleaniconcolumn",
+        header    : _("Read Only"),
+        sortable  : true,
+        dataIndex : "ro",
+        align     : "center",
+        width     : 80,
+        resizable : false,
+        trueIcon  : "switch_on.png",
+        falseIcon : "switch_off.png"
+    },{
         text      : _("Port"),
         sortable  : true,
         dataIndex : "port",
@@ -153,6 +168,7 @@ Ext.define("OMV.module.admin.service.offlineimap.Accounts", {
                         { name : "host", type : "string" },
                         { name : "user", type : "string" },
                         { name : "ssl", type : "boolean" },
+                        { name : "ro", type : "boolean" },
                         { name : "port", type : "string" },
                         { name : "sharedfoldername", type: "string" }
                     ]

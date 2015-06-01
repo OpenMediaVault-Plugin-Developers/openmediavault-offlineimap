@@ -184,6 +184,7 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract
                 "user"            : { "type" : "string" },
                 "pass"            : { "type" : "string" },
                 "ssl"             : { "type" : "boolean" },
+                "ro"              : { "type" : "boolean" },
                 "port"            : { "type" : "integer" },
                 "sharedfolderref" : { '.$GLOBALS['OMV_JSONSCHEMA_UUID'].' }
             }
@@ -197,6 +198,7 @@ class OMVRpcServiceOfflineImap extends OMVRpcServiceAbstract
             "user"            => $params['user'],
             "pass"            => $params['pass'],
             "ssl"             => array_boolval($params, 'ssl'),
+            "ro"              => array_boolval($params, 'ro'),
             "port"            => intval($params['port']),
             "sharedfolderref" => $params['sharedfolderref']
         );

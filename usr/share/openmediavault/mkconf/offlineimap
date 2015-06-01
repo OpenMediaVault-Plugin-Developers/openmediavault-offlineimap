@@ -71,6 +71,7 @@ while [ ${index} -le ${count} ]; do
     user=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/user")
     pass=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/pass")
     ssl=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/ssl")
+    ro=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/ro")
     port=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/port")
     sfref=$(omv_config_get "//services/offlineimap/accounts/account[position()=${index}]/sharedfolderref")
     sfpath=$(omv_get_sharedfolder_path "${sfref}")
@@ -83,6 +84,12 @@ while [ ${index} -le ${count} ]; do
         ssl=""
     else
         ssl="ssl = yes"
+    fi
+
+    if [ "{$ro}" = "0" ]; then
+        ro=""
+    else
+        ro="readonly = True"
     fi
 
     if [ "${name}" != "" ]; then
@@ -104,6 +111,7 @@ remotehost = ${host}
 remoteuser = ${user}
 remotepass = ${pass}
 ${ssl}
+${ro}
 remoteport = ${port}
 
 EOF
