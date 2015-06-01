@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-offlineimap\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-18 10:21-0500\n"
-"PO-Revision-Date: 2014-11-14 19:49+0000\n"
+"POT-Creation-Date: 2015-06-01 08:03-0500\n"
+"PO-Revision-Date: 2015-06-01 13:04+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/openmediavault-offlineimap/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,9 @@ msgstr "Cuentas"
 
 msgid "Add account"
 msgstr "Añadir cuenta"
+
+msgid "An account with the name '%s' already exists."
+msgstr ""
 
 msgid "Done..."
 msgstr "Hecho..."
@@ -50,6 +53,9 @@ msgstr "Contraseña"
 
 msgid "Port"
 msgstr "Puerto"
+
+msgid "Read Only"
+msgstr ""
 
 msgid "SSL"
 msgstr "SSL"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-offlineimap\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-18 10:21-0500\n"
+"POT-Creation-Date: 2015-06-01 08:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,9 @@ msgid "Accounts"
 msgstr ""
 
 msgid "Add account"
+msgstr ""
+
+msgid "An account with the name '%s' already exists."
 msgstr ""
 
 msgid "Done..."
@@ -48,6 +51,9 @@ msgid "Password"
 msgstr ""
 
 msgid "Port"
+msgstr ""
+
+msgid "Read Only"
 msgstr ""
 
 msgid "SSL"
